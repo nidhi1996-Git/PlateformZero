@@ -1,14 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
-import LoginPage from './Component/Login';
-import RegistrationPage from './Component/Registration';
-import {AuthRouter} from './Pages/authRouter'
+import {AuthRouter} from './Pages/authRouter';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
 function App() {
+  const userState= useSelector(state=>state.user)
+  console.log(userState) 
   return (
     <div className="App">
-      {/* <LoginPage/> */}
-      {/* <RegistrationPage/> */}
-      <AuthRouter/>
+      {!userState.login && <AuthRouter/>}
     </div>
   );
 }
